@@ -15,6 +15,7 @@ const StyledModal = styled.div`
     justify-content: center;
     align-items: center;
     z-index: 1050;
+    transition: all 0.3s ease;
   }
 `;
 
@@ -84,7 +85,9 @@ const Modal = ({ formData, setFormData }) => {
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12">
+          <div style={{ overflowX: 'auto', width: '100%' }}>
             <TableManager />
+            </div>
           </div>
         </div>
       </div>

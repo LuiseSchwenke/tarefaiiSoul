@@ -216,10 +216,9 @@ const OverviewTable = ({ data, setFilteredData }) => {
 
     return (
         <div className="container-fluid my-4 text-white d-flex flex-column align-items-center justify-content-center">
-            <h1>Tabela de Usuários</h1>
             <PdfDownload data={data} />
             <div className='table-responsive'>
-            <table ref={tableRef} className="table table-striped table-dark table-bordered rounded-lg myTable w-100">
+            <table ref={tableRef} className="table table-striped table-dark table-bordered rounded-lg myTable">
                 <thead>
                     <tr>
                         {columns.map((col) => (

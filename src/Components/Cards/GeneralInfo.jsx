@@ -198,9 +198,9 @@ const GeneralInfo = ({
       </div>
     </div>
 
-    <div className="col-md-6 col-12">
-      <label className="form-label">Sexo</label>
-      <div className="d-flex flex-column flex-md-row justify-content-start">
+    <div className="col-md-6 col-12" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+      <label className="form-label" style={{ textAlign: "center", marginBottom: "10px" }}>Sexo</label>
+    <div className="d-flex flex-column flex-md-row justify-content-center">
         <RadioLabel className="form-label me-3">
           <RadioInput
             name='sex'
@@ -233,7 +233,7 @@ const GeneralInfo = ({
   </div>
 
   <div className="row mb-3">
-    <div className="col-sm-4 col-md-6 col-12">
+    <div className="col-md-6 col-12">
       <div className="input-control">
         <label htmlFor="cpf" className="form-label">CPF</label>
         <input

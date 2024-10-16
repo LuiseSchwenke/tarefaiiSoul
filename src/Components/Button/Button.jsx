@@ -5,7 +5,11 @@ import Modal from '../Modal/Modal';
 const StyledButton = styled.button`
     z-index:5;
     cursor:pointer;
-    transition: all 0.5s ease-in-out;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+  transform: scale(1.1);
+}
 `;
 
 const Button = ({ selectedRow }) => {
@@ -32,11 +36,11 @@ const Button = ({ selectedRow }) => {
         >
           <i
             className="fa fa-user-plus fa-4x mb-4 pb-2"
-            style={{ color: "#8a9298", fontSize: "4rem" }}
+            style={{ color: "#0d6efd", fontSize: "4rem" }}
           ></i>
 
           <StyledButton
-            className="btn btn-secondary btn-sm btn-lg"
+            className="btn btn-primary btn-lg"
             onClick={openModal}
           >
             Novo Cadastro

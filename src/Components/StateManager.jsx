@@ -1,11 +1,15 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import Address from './Cards/Adress';
+import Bairros from './Cards/Selector/Bairros';
 import Contact from './Cards/Contact';
 import GeneralInfo from './Cards/GeneralInfo';
 import SQLButton from './Button/SQLButton';
 import axios from 'axios';
 
 const StateManager = ({ activeTab, setFilteredData }) => {
+
+  const [errorMessageBairro, setErrorMessageBairro] = useState('');
+
 
   const [formData, setFormData] = useState({
     contact: { mail: '', phone: '' },
@@ -91,9 +95,11 @@ const checkForErrors = (data) => {
           onFormDataChange={(data) => handleFormDataChange('address', data)}
           errorMessageLog={"Campo de logradouro é obrigatorio deve ser entre 2 e 100 caracteres."}
           errorMessageNum={"Campo de Número é obrigatorio deve ser entre 2 e 10 caracteres."}
+        
           patternLog={"^[A-Za-z0-9\\- ]{1,100}$"}
           patternNum={"^[A-Za-z0-9\\- ]{1,10}$"}
-          errorMessageBairro={"Por favor selecione um bairro."}
+          errorMessageBairro={errorMessageBairro}
+          setErrorMessageBairro={setErrorMessageBairro} 
 
         />
       )}

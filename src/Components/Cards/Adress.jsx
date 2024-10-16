@@ -14,6 +14,8 @@ const Address = ({
   errorMessageNum,
   patternLog,
   patternNum,
+  errorMessageBairro,
+  setErrorMessageBairro
 }) => {
   const [streetFocused, setStreetFocused] = useState(false);
   const [numberFocused, setNumberFocused] = useState(false);
@@ -26,7 +28,7 @@ const Address = ({
       setStreetFocused(true);
     } else if (e.target.name === 'number') {
       setNumberFocused(true);
-    }
+    } 
   };
 
   const handleStreetTypeChange = (event) => {
@@ -77,7 +79,9 @@ const Address = ({
     <div>
       <TipoLogradouro data={data} onFormDataChange={handleStreetTypeChange} required />
       <Cidades data={data} onFormDataChange={handleCityChange} required />
-      <Bairros data={data} onFormDataChange={handleBairroChange} required />
+
+      <Bairros data={data} onFormDataChange={handleBairroChange} required errorMessageBairro={errorMessageBairro} setErrorMessageBairro={setErrorMessageBairro}/>
+
 
       <div className="row">
         <div className="col-md-8 col-sm-12 mb-3">

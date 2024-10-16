@@ -11,6 +11,9 @@ th {
   color: white !important;
 }
 
+label {
+  font-size: large;
+}
 
 @media (min-width: 576px) {
   i.fa-user-plus {
@@ -57,4 +60,28 @@ th {
 
 input:invalid[focused="true"] ~ span {
   display: block;
+}
+
+.delete-btn {
+  transition: transform 0.2s ease-in-out;
+}
+
+.delete-btn:hover {
+  transform: scale(1.1);
+}
+
+.btn-primary {
+  transition: transform 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+  transform: scale(1.1);
+}
+
+.btn-primary {
+  transition: transform 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+  transform: scale(1.1);
 }
