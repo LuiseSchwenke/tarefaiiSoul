@@ -1,5 +1,4 @@
 import Button from "./Components/Button/Button";
-import Modal from "./Components/Modal/Modal";
 import StateManager from "./Components/StateManager";
 import { DataProvider } from "./ContextProvider";
 

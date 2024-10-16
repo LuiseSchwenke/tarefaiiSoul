@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Address from './Cards/Adress';
 import Contact from './Cards/Contact';
 import GeneralInfo from './Cards/GeneralInfo';
 import SQLButton from './Button/SQLButton';
 import axios from 'axios';
 
-const StateManager = ({ activeTab, fetchData }) => {
+const StateManager = ({ activeTab, setFilteredData }) => {
 
   const [formData, setFormData] = useState({
     contact: { mail: '', phone: '' },
@@ -35,9 +35,16 @@ const StateManager = ({ activeTab, fetchData }) => {
     try {
         const response = await axios.post('http://localhost:5000/submit', formData);
         
-        if (response.status === 201) {
+        if (response.status === 200 || response.status === 201 || response.status === 204) {
             alert('Dados foram eviados com successo!');
-            await fetchData();
+        /*    const updatedResponse = await axios.get('http://localhost:5000/get_user_data');
+                const updatedData = updatedResponse.data;
+                
+                setFilteredData(updatedData);
+                
+                if (tableRef.current) {
+                    $(tableRef.current).DataTable().clear().rows.add(updatedData).draw();
+                } */
                         
         } else {
             alert('Error enviando os dados.');
@@ -67,15 +74,14 @@ const checkForErrors = (data) => {
         <GeneralInfo
           data={formData.generalInfo}
           onFormDataChange={(data) => handleFormDataChange('generalInfo', data)}
-          errorMessage={"Campo de CPF é obrigatorio"}
-          errorMessage1={"Seu nome precisa ter entre 2 e 100 letras."}
-          errorMessage2={"Seu sobrenome precisa ter entre 2 e 100 letras."}
-          errorMessage3 = {"Campo de data de nascimento é obrigatório."}
+          errorMessageCPF={"Campo de CPF é obrigatorio"}
+          errorMessageNome={"Seu nome precisa ter entre 2 e 100 letras."}
+          errorMessageSobrenome={"Seu sobrenome precisa ter entre 2 e 100 letras."}
+          errorMessageNas = {"Campo de data de nascimento é obrigatório."}
           errorMessageSexo = {"Campo de sexo é obrigatório"}
-          patternName = {"^[a-zA-Z\\- ]{2,100}$"}
-          patternName1 = {"^[a-zA-Z\\- ]{2,100}$"}
+          patternNome = {"^[a-zA-Z\\- ]{2,100}$"}
+          patternSobrenome = {"^[a-zA-Z\\- ]{2,100}$"}
           patternCPF = {"^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$"}
-          
         />
       )}
 
@@ -83,10 +89,10 @@ const checkForErrors = (data) => {
         <Address
           data={formData.address}
           onFormDataChange={(data) => handleFormDataChange('address', data)}
-          errorMessage1={"Campo de logradouro é obrigatorio deve ser entre 2 e 100 caracteres."}
-          errorMessage2={"Campo de Número é obrigatorio deve ser entre 2 e 10 caracteres."}
-          pattern1={"^[A-Za-z0-9\\- ]{1,100}$"}
-          pattern2={"^[A-Za-z0-9\\- ]{1,10}$"}
+          errorMessageLog={"Campo de logradouro é obrigatorio deve ser entre 2 e 100 caracteres."}
+          errorMessageNum={"Campo de Número é obrigatorio deve ser entre 2 e 10 caracteres."}
+          patternLog={"^[A-Za-z0-9\\- ]{1,100}$"}
+          patternNum={"^[A-Za-z0-9\\- ]{1,10}$"}
           errorMessageBairro={"Por favor selecione um bairro."}
 
         />
@@ -97,8 +103,8 @@ const checkForErrors = (data) => {
           <Contact
             data={formData.contact}
             onFormDataChange={(data) => handleFormDataChange('contact', data)}
-            errorMessage1={"Campo de E-Mail é obrigatorio, insire um E-Mail valido."}
-            errorMessage2={"Número de celular é obrigatorio"}
+            errorMessageMail={"Campo de E-Mail é obrigatorio, insire um E-Mail valido."}
+            errorMessagePhone={"Número de celular é obrigatorio"}
             patternMail={"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"}
             patternPhone ={"^([1-9]{2}) (?:[2-8]|9[0-9])[0-9]{3}-[0-9]{4}$"}
 

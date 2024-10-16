@@ -209,7 +209,7 @@ app.get('/get_user_data/:id?', async (req, res) => {
     const data = await executeQuery(q, id ? [id] : []);
     return res.status(200).json(data);
   } catch (err) {
-    return res.status(500).json({ error: 'Database query failed' });
+    return res.status(500).json({ error: 'Falha na consulta do banco de dados' });
   }
 });
 

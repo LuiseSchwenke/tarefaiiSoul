@@ -91,14 +91,22 @@ const GeneralInfo = ({
   const handleBirthdayChange = (event) => {
     const birthDate = new Date(event.target.value);
     const currentDate = new Date();
+    
+    birthDate.setHours(0, 0, 0, 0);
+    currentDate.setHours(0, 0, 0, 0);
+    
+    console.log("BIRTHDATE: ", birthDate, "CURRENTDATE: ", currentDate);
+    
     onFormDataChange({ nascimento: event.target.value });
-
+  
     if (birthDate >= currentDate) {
       setBirthdayError("Data de nascimento deve ser anterior à data atual.");
+      console.log("RESULT BDAY");
     } else {
       setBirthdayError('');
     }
   };
+  
 
   const handleSexoChange = (e) => {
     const selectedSexo = e.target.value;

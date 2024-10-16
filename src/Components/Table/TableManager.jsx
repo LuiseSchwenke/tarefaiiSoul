@@ -32,7 +32,7 @@ const TableManager = () => {
     return (
         <div>
             <SelectTableData tableData={tableData} onApplyFilters={applyFilters} />
-            <StateManager setFilteredData={setFilteredData} /> 
+            <StateManager data={filteredData} setFilteredData={setFilteredData} /> 
             <OverviewTable data={filteredData} setFilteredData={setFilteredData}/>
         </div>
     );

@@ -46,31 +46,31 @@ const Modal = ({ formData, setFormData }) => {
               <div className="card-header">
                 <ul className="nav nav-tabs card-header-tabs">
                   <li className="nav-item">
-                    <a
+                    <button
                       className={`nav-link ${activeTab === 'info' ? 'active' : ''}`}
                       onClick={() => setActiveTab('info')}
-                      role="button"
+                      
                     >
                       Informações Gerais
-                    </a>
+                    </button>
                   </li>
                   <li className="nav-item">
-                    <a
+                    <button
                       className={`nav-link ${activeTab === 'address' ? 'active' : ''}`}
                       onClick={() => setActiveTab('address')}
-                      role="button"
+                      
                     >
                       Endereço
-                    </a>
+                    </button>
                   </li>
                   <li className="nav-item">
-                    <a
+                    <button
                       className={`nav-link ${activeTab === 'contacts' ? 'active' : ''}`}
                       onClick={() => setActiveTab('contacts')}
-                      role="button"
+                      
                     >
                       Contatos
-                    </a>
+                    </button>
                   </li>
                 </ul>
               </div>
